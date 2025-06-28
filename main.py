@@ -32,6 +32,22 @@ def label_result(result):
 
 df['MatchResult'] = df['FTR'].apply(label_result)
 
+# === Step 5: Convert Odds to Implied Probabilities ===
+# Prevent division by zero
+df['Prob_H'] = 1 / df['B365H'].replace(0, pd.NA)
+df['Prob_D'] = 1 / df['B365D'].replace(0, pd.NA)
+df['Prob_A'] = 1 / df['B365A'].replace(0, pd.NA)
+
+# Normalize so the three probabilities sum to 1 (remove bookmaker margin)
+prob_sum = df['Prob_H'] + df['Prob_D'] + df['Prob_A']
+df['Prob_H'] /= prob_sum
+df['Prob_D'] /= prob_sum
+df['Prob_A'] /= prob_sum
+
+# Preview probabilities
+print("\n🧠 Implied Probabilities Sample:")
+print(df[['HomeTeam', 'AwayTeam', 'Prob_H', 'Prob_D', 'Prob_A']])
+
 # === Step 4: Preview Cleaned Data ===
 print("\n🎯 Cleaned & Enriched Data Sample:")
 print(df.head())
