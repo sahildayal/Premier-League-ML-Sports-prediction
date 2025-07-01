@@ -3,7 +3,7 @@ import pandas as pd
 import os
 
 # === Step 1: Load CSV ===
-data_path = os.path.join("Data", "epl_2023.csv")
+data_path = os.path.join("Data", "epl_full.csv")
 
 try:
     df = pd.read_csv(data_path)
@@ -53,5 +53,5 @@ print("\n🎯 Cleaned & Enriched Data Sample:")
 print(df.head())
 
 # Optional: Save cleaned data
-df.to_csv("Data/epl_2023_cleaned.csv", index=False)
-print("\n💾 Cleaned data saved to Data/epl_2023_cleaned.csv")
+df.to_csv("Data/epl_full_cleaned.csv", index=False)
+print("\n💾 Cleaned data saved to Data/epl_full_cleaned.csv")

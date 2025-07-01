@@ -5,7 +5,7 @@ from sklearn.metrics import accuracy_score, classification_report
 import pandas as pd
 
 # === Step 1: Load Cleaned Data ===
-df = pd.read_csv("Data/epl_2023_cleaned.csv")
+df = pd.read_csv("Data/epl_full_cleaned.csv")
 
 # === Step 2: Feature Selection ===
 features = ['GoalDiff', 'Prob_H', 'Prob_D', 'Prob_A']
